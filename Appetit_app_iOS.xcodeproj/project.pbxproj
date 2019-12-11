@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		648CEF8F23A09524002BAD9C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 648CEF8E23A09524002BAD9C /* Default-568h@2x.png */; };
 		649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0057239FDB8800E7B8FA /* AppDelegate.swift */; };
 		649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0059239FDB8800E7B8FA /* SceneDelegate.swift */; };
 		649F005C239FDB8800E7B8FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F005B239FDB8800E7B8FA /* ViewController.swift */; };
@@ -14,11 +15,12 @@
 		649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 649F0060239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld */; };
 		649F0064239FDB8B00E7B8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649F0063239FDB8B00E7B8FA /* Assets.xcassets */; };
 		649F0067239FDB8B00E7B8FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649F0065239FDB8B00E7B8FA /* LaunchScreen.storyboard */; };
-		C079DD4252A96647EBA62AD6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C079D75294DA1F9C4256B197 /* README.md */; };
+		C079DD4252A96647EBA62AD6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C079D75294DA1F9C4256B197 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		649F0054239FDB8800E7B8FA /* Appetit_app_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetit_app_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		648CEF8E23A09524002BAD9C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		649F0054239FDB8800E7B8FA /* Appetit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649F0057239FDB8800E7B8FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		649F0059239FDB8800E7B8FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		649F005B239FDB8800E7B8FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +55,7 @@
 		649F0055239FDB8800E7B8FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				649F0054239FDB8800E7B8FA /* Appetit_app_iOS.app */,
+				649F0054239FDB8800E7B8FA /* Appetit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +77,7 @@
 				649F0059239FDB8800E7B8FA /* SceneDelegate.swift */,
 				649F0057239FDB8800E7B8FA /* AppDelegate.swift */,
 				649F0063239FDB8B00E7B8FA /* Assets.xcassets */,
+				648CEF8E23A09524002BAD9C /* Default-568h@2x.png */,
 				649F0068239FDB8B00E7B8FA /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -122,7 +125,7 @@
 			);
 			name = Appetit_app_iOS;
 			productName = Appetit_app_iOS;
-			productReference = 649F0054239FDB8800E7B8FA /* Appetit_app_iOS.app */;
+			productReference = 649F0054239FDB8800E7B8FA /* Appetit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,7 +166,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C079DD4252A96647EBA62AD6 /* README.md in Resources */,
 				649F0067239FDB8B00E7B8FA /* LaunchScreen.storyboard in Resources */,
+				648CEF8F23A09524002BAD9C /* Default-568h@2x.png in Resources */,
 				649F0064239FDB8B00E7B8FA /* Assets.xcassets in Resources */,
 				649F005F239FDB8800E7B8FA /* Main.storyboard in Resources */,
 			);
@@ -180,7 +185,6 @@
 				649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */,
 				649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */,
 				649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */,
-				C079DD4252A96647EBA62AD6 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,14 +330,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7UU3L8X6Z;
-				INFOPLIST_FILE = Appetit_app_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = "$(SRCROOT)/Appetit_app_iOS/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mjop.Appetit-app-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Appetit;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -345,14 +349,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7UU3L8X6Z;
-				INFOPLIST_FILE = Appetit_app_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = "$(SRCROOT)/Appetit_app_iOS/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mjop.Appetit-app-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Appetit;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
