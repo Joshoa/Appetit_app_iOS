@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		648CEF8F23A09524002BAD9C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 648CEF8E23A09524002BAD9C /* Default-568h@2x.png */; };
+		648CEF9423A0A88E002BAD9C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648CEF9323A0A88E002BAD9C /* CoreDataStack.swift */; };
+		648CEF9623A0AA36002BAD9C /* ViewController+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648CEF9523A0AA36002BAD9C /* ViewController+CoreData.swift */; };
 		649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0057239FDB8800E7B8FA /* AppDelegate.swift */; };
 		649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0059239FDB8800E7B8FA /* SceneDelegate.swift */; };
 		649F005C239FDB8800E7B8FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F005B239FDB8800E7B8FA /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		648CEF8E23A09524002BAD9C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		648CEF9323A0A88E002BAD9C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		648CEF9523A0AA36002BAD9C /* ViewController+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CoreData.swift"; sourceTree = "<group>"; };
 		649F0054239FDB8800E7B8FA /* Appetit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649F0057239FDB8800E7B8FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		649F0059239FDB8800E7B8FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 		649F006E239FDC0400E7B8FA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				648CEF9323A0A88E002BAD9C /* CoreDataStack.swift */,
 				649F0059239FDB8800E7B8FA /* SceneDelegate.swift */,
 				649F0057239FDB8800E7B8FA /* AppDelegate.swift */,
 				649F0063239FDB8B00E7B8FA /* Assets.xcassets */,
@@ -103,6 +108,7 @@
 		649F0072239FDD4300E7B8FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				648CEF9523A0AA36002BAD9C /* ViewController+CoreData.swift */,
 				649F0060239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld */,
 			);
 			path = Models;
@@ -181,10 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648CEF9423A0A88E002BAD9C /* CoreDataStack.swift in Sources */,
 				649F005C239FDB8800E7B8FA /* ViewController.swift in Sources */,
 				649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */,
 				649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */,
 				649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */,
+				648CEF9623A0AA36002BAD9C /* ViewController+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
