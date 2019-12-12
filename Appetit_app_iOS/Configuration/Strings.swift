@@ -13,4 +13,7 @@ public class Strings {
     // MARK: - DateTime format strings
     public static let dateTimeFormat = "dd/MM/yyyy - HH:mm"
     public static let dateTimeFormat2 = "yyyy-MM-dd HH:mm:ss"
+    
+    // MARK: - Views Storyboard IDs
+    public static let loginViewId = "loginViewId"
 }

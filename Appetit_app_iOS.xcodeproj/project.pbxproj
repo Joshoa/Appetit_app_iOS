@@ -20,12 +20,12 @@
 		6439DB1423A1FCE200AC387D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439DB1323A1FCE200AC387D /* Utils.swift */; };
 		6439DB1623A1FE8C00AC387D /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439DB1523A1FE8C00AC387D /* DateTime.swift */; };
 		6439DB1823A2003200AC387D /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439DB1723A2003200AC387D /* Strings.swift */; };
+		6439DB1B23A20A7200AC387D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439DB1A23A20A7200AC387D /* LoginViewController.swift */; };
 		648CEF8F23A09524002BAD9C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 648CEF8E23A09524002BAD9C /* Default-568h@2x.png */; };
 		648CEF9423A0A88E002BAD9C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648CEF9323A0A88E002BAD9C /* CoreDataStack.swift */; };
 		648CEF9623A0AA36002BAD9C /* ViewController+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648CEF9523A0AA36002BAD9C /* ViewController+CoreData.swift */; };
 		649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0057239FDB8800E7B8FA /* AppDelegate.swift */; };
 		649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F0059239FDB8800E7B8FA /* SceneDelegate.swift */; };
-		649F005C239FDB8800E7B8FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F005B239FDB8800E7B8FA /* ViewController.swift */; };
 		649F005F239FDB8800E7B8FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649F005D239FDB8800E7B8FA /* Main.storyboard */; };
 		649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 649F0060239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld */; };
 		649F0064239FDB8B00E7B8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649F0063239FDB8B00E7B8FA /* Assets.xcassets */; };
@@ -47,13 +47,13 @@
 		6439DB1323A1FCE200AC387D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6439DB1523A1FE8C00AC387D /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		6439DB1723A2003200AC387D /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		6439DB1A23A20A7200AC387D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		648CEF8E23A09524002BAD9C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		648CEF9323A0A88E002BAD9C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		648CEF9523A0AA36002BAD9C /* ViewController+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CoreData.swift"; sourceTree = "<group>"; };
 		649F0054239FDB8800E7B8FA /* Appetit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649F0057239FDB8800E7B8FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		649F0059239FDB8800E7B8FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		649F005B239FDB8800E7B8FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		649F005E239FDB8800E7B8FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		649F0061239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Appetit_app_iOS.xcdatamodel; sourceTree = "<group>"; };
 		649F0063239FDB8B00E7B8FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		649F0071239FDD3300E7B8FA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				649F005B239FDB8800E7B8FA /* ViewController.swift */,
+				6439DB1A23A20A7200AC387D /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				6439DB0C23A1F88C00AC387D /* Client+CoreDataProperties.swift in Sources */,
 				6439DB1223A1F88C00AC387D /* User+CoreDataProperties.swift in Sources */,
 				648CEF9423A0A88E002BAD9C /* CoreDataStack.swift in Sources */,
-				649F005C239FDB8800E7B8FA /* ViewController.swift in Sources */,
+				6439DB1B23A20A7200AC387D /* LoginViewController.swift in Sources */,
 				6439DB1823A2003200AC387D /* Strings.swift in Sources */,
 				649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */,
 				6439DAEE23A1EDFB00AC387D /* Params.swift in Sources */,
