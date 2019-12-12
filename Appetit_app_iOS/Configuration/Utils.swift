@@ -8,7 +8,9 @@
 
 import Foundation
 import CoreData
+import UIKit
 
+// MARK: - CoreData utilities
 public class CoreDataUtils {
     
     public static func getEntityAndManagedObjectContext<T>(decoder: Decoder, entityClass: T) -> (NSEntityDescription, NSManagedObjectContext) {
@@ -57,5 +59,13 @@ public class CoreDataUtils {
                 print("Could not resolve or attribute type. Add the type of \(entity.value(forKey: key.stringValue) ?? "<UNKNOWN VALUE>") to the method.")
             }
         }
+    }
+}
+
+public class Utils {
+    public static func setKeyboardDenitsNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
     }
 }

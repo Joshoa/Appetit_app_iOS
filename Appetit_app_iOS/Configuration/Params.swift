@@ -9,6 +9,7 @@
 import Foundation
 
 public class Params {
+    // MARK: - WebService strings
     static let DEFAULT_WS_URI = "http://localhost:3000"
     static let USER_LOGIN = "/user"
     static let IMPORT_ORDERS = "/order"
