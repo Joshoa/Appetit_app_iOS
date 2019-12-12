@@ -12,15 +12,9 @@ import CoreData
 
 
 extension Client {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Client> {
-        return NSFetchRequest<Client>(entityName: "Client")
+    public func encode(to encoder: Encoder) throws {
+        try CoreDataUtils.encodeEntities(entity: self, encoder: encoder, keys: CodingKeys.allCases)
     }
-
-    @NSManaged public var id: Int32
-    @NSManaged public var name: String?
-    @NSManaged public var orders: NSSet?
-
 }
 
 // MARK: Generated accessors for orders

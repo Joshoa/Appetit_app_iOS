@@ -12,18 +12,9 @@ import CoreData
 
 
 extension Order {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Order> {
-        return NSFetchRequest<Order>(entityName: "Order")
+    public func encode(to encoder: Encoder) throws {
+        try CoreDataUtils.encodeEntities(entity: self, encoder: encoder, keys: CodingKeys.allCases)
     }
-
-    @NSManaged public var date: NSObject?
-    @NSManaged public var id: Int32
-    @NSManaged public var paymentStatus: Bool
-    @NSManaged public var client: Client?
-    @NSManaged public var products: NSSet?
-    @NSManaged public var user: User?
-
 }
 
 // MARK: Generated accessors for products
