@@ -14,3 +14,9 @@ extension UIViewController {
         return CoreDataStack.sharedInstance.persistentContainer.viewContext
     }
 }
+
+// Get NSManagedObjectContext with userInfo property in Decoder:
+
+public extension CodingUserInfoKey {
+    static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
+}
