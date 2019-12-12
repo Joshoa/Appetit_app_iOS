@@ -29,9 +29,9 @@
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Order" inverseName="user" inverseEntity="Order"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Client" positionX="-54" positionY="18" width="128" height="88"/>
-        <element name="Product" positionX="-36" positionY="27" width="128" height="133"/>
-        <element name="Order" positionX="-18" positionY="63" width="128" height="133"/>
+        <element name="User" positionX="-0.05078125" positionY="-199.70703125" width="128" height="118"/>
+        <element name="Client" positionX="38.234375" positionY="-330.75" width="128" height="88"/>
+        <element name="Product" positionX="206.8828125" positionY="-72.90234375" width="128" height="133"/>
+        <element name="Order" positionX="217.0390625" positionY="-258.88671875" width="128" height="133"/>
     </elements>
 </model>
