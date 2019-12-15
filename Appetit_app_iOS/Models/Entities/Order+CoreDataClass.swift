@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Order)
-public class Order: NSManagedObject {
+public class Order: NSManagedObject, Codable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Order> {
         return NSFetchRequest<Order>(entityName: "Order")

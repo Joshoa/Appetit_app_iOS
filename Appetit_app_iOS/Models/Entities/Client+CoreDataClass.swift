@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Client)
-public class Client: NSManagedObject {
+public class Client: NSManagedObject, Codable {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Client> {
         return NSFetchRequest<Client>(entityName: "Client")

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 public class RestfulWebService: Params {
     private static let configuration: URLSessionConfiguration = {
@@ -51,6 +52,30 @@ public class RestfulWebService: Params {
         dataTask.resume()
         if ex != nil {
             throw ex!
+        }
+    }
+    
+    public static func logingWS(context: NSManagedObjectContext, login: String, password: String, callback: @escaping (_ responseToken: User) -> Void) {
+        let parameters = [ "email" : login,
+                           "password" : password ]
+        do {
+            try genericWS(parameters: parameters, urlString: DEFAULT_WS_URI + USER_LOGIN + "/", onSucces: { data in
+                do {
+                    if let data = data, let result = try UserDao.saveUser(json: data, with: context) {
+                        callback(result)
+                    }
+                } catch {
+                    // TODO: show msg in toast
+                    print("Failed to save user.")
+                    print(error.localizedDescription)
+                }
+            }, onFailure: {
+                    // TODO: show msg in toast
+                    print("Internal failure.")
+                })
+        } catch let ex {
+            // TODO: show msg in toast
+            print(ex.localizedDescription)
         }
     }
 }

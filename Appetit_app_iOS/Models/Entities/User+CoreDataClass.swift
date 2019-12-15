@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(User)
-public class User: NSManagedObject {
+public class User: NSManagedObject, Codable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
@@ -28,7 +28,6 @@ public class User: NSManagedObject {
         case id
         case name
         case password
-        case orders
     }
     
     required convenience public init(from decoder: Decoder) throws {

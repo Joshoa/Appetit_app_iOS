@@ -17,6 +17,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btEyePswd: UIButton!
     @IBOutlet weak var btLogin: UIButton!
     
+    private var loggedUser: User?
+    
     // MARK: - Controllers functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     deinit {
         Utils.setKeyboardDenitsNotifications()
     }
+    
+    // MARK: - Handle keyboard when it's in front of tfPassword
+       private func initObservers() {
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillShowNotification, object: nil)
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+       }
+       
+       @objc func keyboardWillChange(notification: Notification) {
+           if tfPassword.isFirstResponder {
+               guard let keyboardRect = (notification.userInfo?[UIWindow.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                   return
+               }
+               if notification.name == UIWindow.keyboardWillShowNotification || notification.name == UIWindow.keyboardWillChangeFrameNotification {
+                   self.view.frame.origin.y = -keyboardRect.height + btLogin.frame.height + tfPassword.frame.height
+               } else {
+                   self.view.frame.origin.y = 0
+               }
+           } else if notification.name == UIWindow.keyboardWillHideNotification {
+               self.view.frame.origin.y = 0
+           }
+       }
     
     // MARK: - UITextFieldDelegate functions
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -48,28 +72,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         configTfEmail()
         configTfPswd()
         configBtLogin()
-    }
-    
-    // MARK: - Handle keyboard when it's in front of tfPassword
-    private func initObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    @objc func keyboardWillChange(notification: Notification) {
-        if tfPassword.isFirstResponder {
-            guard let keyboardRect = (notification.userInfo?[UIWindow.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-                return
-            }
-            if notification.name == UIWindow.keyboardWillShowNotification || notification.name == UIWindow.keyboardWillChangeFrameNotification {
-                self.view.frame.origin.y = -keyboardRect.height + btLogin.frame.height + tfPassword.frame.height
-            } else {
-                self.view.frame.origin.y = 0
-            }
-        } else if notification.name == UIWindow.keyboardWillHideNotification {
-            self.view.frame.origin.y = 0
-        }
     }
     
     private func setTfsPadding() {
@@ -150,8 +152,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private func login() {
+        if let email = tfEmail.text, !email.isEmpty {
+            if  let pswd = tfPassword.text, !pswd.isEmpty {
+                RestfulWebService.logingWS(context: context, login: email, password: pswd) { user in
+                    self.loggedUser = user
+                    print(self.loggedUser!.name ?? "No name!")
+                }
+            } else {
+                // TODO: show msg in toast
+                print("Empty password.")
+            }
+        } else {
+            // TODO: show msg in toast
+            print("Empty email.")
+        }
+    }
+    
     // MARK: - Actions functions
     @IBAction func loginAction(_ sender: UIButton) {
+        login()
     }
     
     @IBAction func showPasswordAction(_ sender: UIButton) {
