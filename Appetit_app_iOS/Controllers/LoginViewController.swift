@@ -79,8 +79,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tfPassword.setLeftPadding(15)
     }
     
-    private func setDefaultConfigTf(_ tf: UITextField) {
-        tf.setBorder(width: 1, color: UIColor.lightGray)
+    private func tfsSetBorder(_ tf: UITextField, width: CGFloat = 1, color: UIColor = UIColor.lightGray) {
+        tf.borderWidth = width
+        tf.borderColor = color
     }
     
     private func setBtEyePswdState() {
@@ -107,21 +108,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configBtLogin() {
-        btLogin.setCorner(radius: 28)
+        btLogin.cornerRadius = 28
     }
     
     private func configTfEmail() {
         tfEmail.delegate = self
-        tfEmail.setCorner(radius: 6)
-        setDefaultConfigTf(tfEmail)
+        tfEmail.cornerRadius = 6
+        tfsSetBorder(tfEmail)
         tfEmail.addTarget(self, action: #selector(highlightTfEmail), for: .allEvents)
     }
     
     private func configTfPswd() {
         tfPassword.delegate = self
-        tfPassword.setCorner(radius: 6)
+        tfPassword.cornerRadius = 6
         btEyePswd.isEnabled = false
-        setDefaultConfigTf(tfPassword)
+        tfsSetBorder(tfPassword)
         setBtEyePswdState()
         tfPassword.addTarget(self, action: #selector(highlightTfPswd), for: .allEvents)
     }
@@ -130,10 +131,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func highlightTfEmail() {
         if tfEmail.isFirstResponder {
             lbEmail.textColor = UIColor(named: "main_color")
-            tfEmail.setBorder(width: 2.5, color: UIColor(named: "main_color")!)
+            tfsSetBorder(tfEmail, width: 2.5, color: UIColor(named: "main_color")!)
             lbEmail.isHidden = false
         } else {
-            setDefaultConfigTf(tfEmail)
+            tfsSetBorder(tfEmail)
             handleTopLbsTfs(label: lbEmail, textField: tfEmail)
         }
     }
@@ -142,13 +143,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func highlightTfPswd() {
         if tfPassword.isFirstResponder {
             lbPassword.textColor = UIColor(named: "main_color")
-            tfPassword.setBorder(width: 2.5, color: UIColor(named: "main_color")!)
+            tfsSetBorder(tfPassword, width: 2.5, color: UIColor(named: "main_color")!)
             btEyePswd.isEnabled = true
             lbPassword.isHidden = false
         } else {
-            setDefaultConfigTf(tfPassword)
+            tfsSetBorder(tfPassword)
             btEyePswd.isEnabled = false
             handleTopLbsTfs(label: lbPassword, textField: tfPassword)
+        }
+    }
+    
+    // MARK: - Login functions
+    private func goToListOrders() {
+        if let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: Strings.navigationControllerId), let vc = self.storyboard?.instantiateViewController(withIdentifier: Strings.listOrdersViewId) {
+            let listOrdersVC = vc as! ListOrdersViewController
+            listOrdersVC.setUser(loggedUser!)
+            let navVC = navigationVC as! UINavigationController
+            navVC.viewControllers = [listOrdersVC]
+            self.show(navigationVC, sender: self)
         }
     }
     
@@ -157,7 +169,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if  let pswd = tfPassword.text, !pswd.isEmpty {
                 RestfulWebService.logingWS(context: context, login: email, password: pswd) { user in
                     self.loggedUser = user
-                    print(self.loggedUser!.name ?? "No name!")
+                    if self.loggedUser != nil {
+                        self.goToListOrders()
+                    }
                 }
             } else {
                 // TODO: show msg in toast

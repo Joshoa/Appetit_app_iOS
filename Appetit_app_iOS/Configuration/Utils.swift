@@ -69,3 +69,20 @@ public class Utils {
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
     }
 }
+
+
+public class UIUtils {
+    public static func changeUISearchBarColor(searchBar: UISearchBar, color: UIColor) {
+        let textField = searchBar.value(forKey: "searchField") as! UITextField
+        textField.backgroundColor = .clear
+        let glassIconView = textField.leftView as! UIImageView
+        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView.tintColor = color
+        textField.tintColor = color
+    }
+    
+    public static func changeUISearchFont(searchBar: UISearchBar, size: CGFloat) {
+        let textField = searchBar.value(forKey: "searchField") as! UITextField
+        textField.font = UIFont.systemFont(ofSize: size, weight: .light)
+    }
+}

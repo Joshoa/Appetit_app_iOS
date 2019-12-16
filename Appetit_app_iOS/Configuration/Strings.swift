@@ -14,6 +14,11 @@ public class Strings {
     public static let dateTimeFormat = "dd/MM/yyyy - HH:mm"
     public static let dateTimeFormat2 = "yyyy-MM-dd HH:mm:ss"
     
+    // MARK: - Segues Identifier
+    public static let loginGoToListOrders = "loginGoToListOrders"
+    
     // MARK: - Views Storyboard IDs
     public static let loginViewId = "loginViewId"
+    public static let navigationControllerId = "navigationControllerId"
+    public static let listOrdersViewId = "listOrdersViewId"
 }
