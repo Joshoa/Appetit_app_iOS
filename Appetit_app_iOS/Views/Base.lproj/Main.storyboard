@@ -207,7 +207,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwK-mg-Itv" userLabel="Bt Filter">
-                                <rect key="frame" x="348" y="259.5" width="36" height="28"/>
+                                <rect key="frame" x="366" y="262.5" width="18" height="22"/>
                                 <state key="normal" image="filter_icon"/>
                                 <connections>
                                     <action selector="filterAction:" destination="Srd-Fx-tFY" eventType="touchUpInside" id="gc7-Bu-dFB"/>
@@ -223,9 +223,13 @@
                                 <color key="textColor" name="dark_color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xYN-Vb-JTm">
-                                <rect key="frame" x="20" y="334.5" width="374" height="463.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xYN-Vb-JTm">
+                                <rect key="frame" x="12" y="334.5" width="390" height="463.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="xKM-m9-QKN"/>
+                                </constraints>
+                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Srd-Fx-tFY" id="hyb-qt-dYL"/>
                                     <outlet property="delegate" destination="Srd-Fx-tFY" id="bhf-US-TfF"/>
@@ -240,7 +244,7 @@
                             <constraint firstItem="TYi-tX-iUV" firstAttribute="leading" secondItem="ogT-s7-YcK" secondAttribute="leading" constant="10" id="9hd-tJ-1Lc"/>
                             <constraint firstItem="ogT-s7-YcK" firstAttribute="bottom" secondItem="xYN-Vb-JTm" secondAttribute="bottom" constant="10" id="IrB-L7-5Gj"/>
                             <constraint firstItem="qYT-sT-dRH" firstAttribute="trailing" secondItem="hF1-CS-Qge" secondAttribute="trailing" id="JU1-Le-odh"/>
-                            <constraint firstItem="xYN-Vb-JTm" firstAttribute="leading" secondItem="qYT-sT-dRH" secondAttribute="leading" id="Yjc-Kn-06c"/>
+                            <constraint firstItem="xYN-Vb-JTm" firstAttribute="leading" secondItem="ogT-s7-YcK" secondAttribute="leading" constant="12" id="Yjc-Kn-06c"/>
                             <constraint firstItem="TYi-tX-iUV" firstAttribute="top" secondItem="qYT-sT-dRH" secondAttribute="bottom" constant="30" id="an6-4F-IFK"/>
                             <constraint firstItem="hF1-CS-Qge" firstAttribute="centerX" secondItem="Mks-85-LPa" secondAttribute="centerX" id="cYP-GF-ZlR"/>
                             <constraint firstItem="WIa-mt-VkM" firstAttribute="top" secondItem="TYi-tX-iUV" secondAttribute="bottom" id="dvv-7w-AtK"/>
@@ -251,7 +255,7 @@
                             <constraint firstItem="qYT-sT-dRH" firstAttribute="top" secondItem="hF1-CS-Qge" secondAttribute="bottom" constant="40" id="rEj-2Y-OPQ"/>
                             <constraint firstItem="WIa-mt-VkM" firstAttribute="trailing" secondItem="TYi-tX-iUV" secondAttribute="trailing" constant="-7" id="vRw-cv-WgC"/>
                             <constraint firstItem="TYi-tX-iUV" firstAttribute="trailing" secondItem="wwK-mg-Itv" secondAttribute="trailing" constant="20" id="wCO-o3-bBr"/>
-                            <constraint firstItem="xYN-Vb-JTm" firstAttribute="trailing" secondItem="qYT-sT-dRH" secondAttribute="trailing" id="xeG-2F-HUn"/>
+                            <constraint firstItem="xYN-Vb-JTm" firstAttribute="trailing" secondItem="ogT-s7-YcK" secondAttribute="trailing" constant="-12" id="xeG-2F-HUn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ogT-s7-YcK"/>
                     </view>

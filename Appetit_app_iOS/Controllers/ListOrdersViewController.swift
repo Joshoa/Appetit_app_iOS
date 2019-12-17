@@ -30,11 +30,23 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Data load functions
     private func loadOrders() {
         importDataFromServer()
+        fetchOrders()
     }
     
     private func importDataFromServer() {
+        OrderDao.deleteAll(with: context)
         let parameters = ["user": "\(user?.id ?? 0)" ]
         RestfulWebService.importOrdersWS(context: context, parameters: parameters, callback: {})
+    }
+    
+    private func fetchOrders() {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: OrderDao.getFetchRequest(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            print(error.localizedDescription )
+        }
     }
     
     // MARK: - Table view data source
@@ -49,7 +61,12 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.orderCell, for: indexPath) as! OrdersTableViewCell
+        guard let order = fetchedResultController.fetchedObjects?[indexPath.row] else {
+            return cell
+        }
+        // Configure the cell...
+        cell.prepare(with: order)
         return cell
     }
     
@@ -62,7 +79,13 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         if user != nil {
             self.title = "Olá, \(user!.name ?? "No name")!"
         }
+        configTableView()
         configSearchBar()
+    }
+    
+    private func configTableView() {
+        self.tableView.register(UINib(nibName: Strings.ordersTableViewCellXib, bundle: nil), forCellReuseIdentifier: Strings.orderCell)
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func configLbNoOrders() {
@@ -83,5 +106,17 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func filterAction(_ sender: UIButton) {
+    }
+}
+
+
+extension ListOrdersViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            case .delete:
+                break
+            default:
+                tableView.reloadData()
+        }
     }
 }
