@@ -14,6 +14,7 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var btNewOrder: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btFilter: UIButton!
     
     private var user: User?
     private var listIsAscending: Bool = true
@@ -26,6 +27,11 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         configLbNoOrders()
         loadOrders()
         initViews()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.btFilter.isHidden = false
+        view.endEditing(true)
     }
     
     // MARK: - Data load functions
@@ -41,14 +47,29 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.reloadData()
     }
     
+    private func searchOrders(input: String) {
+        if !input.isEmpty {
+            let compound = GenericDao.getPredicates(querys: ["client contains [c] %@", "products contains [c] %@"], filtering: input)
+            fetchedResultController.fetchRequest.predicate = compound
+        } else {
+            setFetchedResultController()
+        }
+        GenericDao.performFetch(fetchedResultController: fetchedResultController as! NSFetchedResultsController<NSFetchRequestResult>)
+        tableView.reloadData()
+    }
+    
     private func importDataFromServer() {
         OrderDao.deleteAll(with: context)
         let parameters = ["user": "\(user?.id ?? 0)" ]
         RestfulWebService.importOrdersWS(context: context, parameters: parameters, callback: {})
     }
     
-    private func fetchOrders(ascending: Bool = true) {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: OrderDao.getFetchRequest(ascending: ascending), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    private func setFetchedResultController() {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: OrderDao.getFetchRequest(ascending: listIsAscending), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
+    private func fetchOrders() {
+        setFetchedResultController()
         fetchedResultController.delegate = self
         GenericDao.performFetch(fetchedResultController: fetchedResultController as! NSFetchedResultsController<NSFetchRequestResult>)
     }
@@ -105,6 +126,7 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         UIUtils.changeUISearchBarColor(searchBar: searchBar, color: UIColor(named: "main_color")!)
         UIUtils.changeUISearchFont(searchBar: searchBar, size: 18)
         searchBar.tintColor = UIColor(named: "main_color")
+        searchBar.delegate = self
     }
     
     // MARK: - Actions functions
@@ -126,4 +148,30 @@ extension ListOrdersViewController: NSFetchedResultsControllerDelegate {
                 tableView.reloadData()
         }
     }
+}
+
+extension ListOrdersViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        searchOrders(input: self.searchBar.text!)
+        self.btFilter.isHidden = false
+    }
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchOrders(input: self.searchBar.text!)
+        self.btFilter.isHidden = false
+    }
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if self.searchBar.text?.isEmpty ?? false {
+            self.btFilter.isHidden = false
+        } else {
+            self.btFilter.isHidden = true
+        }
+        if (self.searchBar.text?.count ?? 0) > 2 || self.searchBar.text?.isEmpty ?? false {
+            searchOrders(input: self.searchBar.text!)
+        }
+    }
+    
+    public func updateSearchResults(for searchController: UISearchController) {}
 }

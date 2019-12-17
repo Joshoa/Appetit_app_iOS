@@ -261,6 +261,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Abd-eR-EJ0"/>
                     <connections>
+                        <outlet property="btFilter" destination="wwK-mg-Itv" id="k8g-WX-hCR"/>
                         <outlet property="btNewOrder" destination="qYT-sT-dRH" id="LBx-7s-yvz"/>
                         <outlet property="searchBar" destination="TYi-tX-iUV" id="RjN-8Y-zzw"/>
                         <outlet property="tableView" destination="xYN-Vb-JTm" id="nO6-jp-hcD"/>

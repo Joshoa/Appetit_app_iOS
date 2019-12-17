@@ -44,6 +44,14 @@ class GenericDao {
         return nil
     }
     
+    public static func getPredicates(querys: [String], filtering: String) -> NSCompoundPredicate {
+        var predicates: [NSPredicate] = []
+        for query in querys {
+            predicates.append(NSPredicate(format: query, filtering))
+        }
+        return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
+    }
+    
     public static func performFetch(fetchedResultController: NSFetchedResultsController<NSFetchRequestResult>) {
         do {
             try fetchedResultController.performFetch()
