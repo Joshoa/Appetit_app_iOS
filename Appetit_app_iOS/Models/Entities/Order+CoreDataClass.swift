@@ -20,9 +20,10 @@ public class Order: NSManagedObject, Codable {
     @NSManaged public var date: DateTime?
     @NSManaged public var id: Int32
     @NSManaged public var paymentStatus: Bool
-    @NSManaged public var client: Int32
+    @NSManaged public var client: String?
     @NSManaged public var products: String?
     @NSManaged public var user: Int32
+    @NSManaged public var amount: Double
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case date
@@ -31,6 +32,7 @@ public class Order: NSManagedObject, Codable {
         case client
         case products
         case user
+        case amount
     }
     
     required convenience public init(from decoder: Decoder) throws {
