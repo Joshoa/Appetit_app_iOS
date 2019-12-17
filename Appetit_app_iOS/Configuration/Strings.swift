@@ -24,6 +24,6 @@ public class Strings {
     
     // MARK: - Strings
     public static let noOrdersLabelText = "Não há pedidos cadastrados"
-    public static let importSucess = "importsucess"
-    public static let importFailed = "importfailed"
+    public static let importSuccess = "Success to import data!"
+    public static let importFailed = "Failed to import data!"
 }

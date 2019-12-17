@@ -71,7 +71,7 @@ public class RestfulWebService: Params {
                 }
             }, onFailure: {
                     // TODO: show msg in toast
-                    print("Internal failure.")
+                    print(Strings.importFailed)
                 })
         } catch let ex {
             // TODO: show msg in toast
@@ -79,13 +79,14 @@ public class RestfulWebService: Params {
         }
     }
     
-    public static func importOrdersWS(context: NSManagedObjectContext, parameters: [String: String], callback: @escaping (_ responseToken: String) -> Void) {
+    public static func importOrdersWS(context: NSManagedObjectContext, parameters: [String: String], callback: @escaping () -> Void) {
         do {
             try genericWS(parameters: parameters, urlString: DEFAULT_WS_URI + IMPORT_ORDERS + "/", onSucces: { data in
                 do {
-                    print(String(data: data!, encoding: .utf8) ?? "No data!")
-                    if let data = data, let result = try OrderDao.saveOrder(json: data, with: context) {
-                        callback("\(result[0].paymentStatus ? "\(result[0].id)" : "Mjop")")
+                    if let data = data, let _ = try OrderDao.saveOrder(json: data, with: context) {
+                        callback()
+                        // TODO: show msg in toast
+                        print(Strings.importSuccess)
                     }
                 } catch {
                     // TODO: show msg in toast
@@ -94,7 +95,7 @@ public class RestfulWebService: Params {
                 }
             }, onFailure: {
                     // TODO: show msg in toast
-                    print("Internal failure.")
+                    print(Strings.importFailed)
                 })
         } catch let ex {
             // TODO: show msg in toast

@@ -34,9 +34,7 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func importDataFromServer() {
         let parameters = ["user": "\(user?.id ?? 0)" ]
-        RestfulWebService.importOrdersWS(context: context, parameters: parameters) { response in
-            print(response)
-        }
+        RestfulWebService.importOrdersWS(context: context, parameters: parameters, callback: {})
     }
     
     // MARK: - Table view data source
