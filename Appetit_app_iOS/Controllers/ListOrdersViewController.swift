@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
-class ListOrdersViewController: UIViewController {
+class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var btNewOrder: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     
     private var user: User?
+    private var fetchedResultController: NSFetchedResultsController<Order>!
+    private var lbNoOrders = UILabel()
 
     // MARK: - Controllers functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        configLbNoOrders()
         loadOrders()
         initViews()
     }
@@ -25,6 +30,22 @@ class ListOrdersViewController: UIViewController {
     // MARK: - Data load functions
     private func loadOrders() {
         
+    }
+    
+    // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let resultController = fetchedResultController, let count = resultController.fetchedObjects?.count, count > 0 {
+            tableView.backgroundView = nil
+            return count
+        } else {
+            tableView.backgroundView = lbNoOrders
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        return cell
     }
     
     // MARK: - Views configure functions
@@ -37,6 +58,13 @@ class ListOrdersViewController: UIViewController {
             self.title = "Olá, \(user!.name ?? "No name")!"
         }
         configSearchBar()
+    }
+    
+    private func configLbNoOrders() {
+        lbNoOrders.text = Strings.noOrdersLabelText.uppercased()
+        lbNoOrders.textColor = UIColor(named: "dark_color")
+        lbNoOrders.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        lbNoOrders.textAlignment = .center
     }
     
     private func configSearchBar() {

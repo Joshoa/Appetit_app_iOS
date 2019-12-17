@@ -21,4 +21,7 @@ public class Strings {
     public static let loginViewId = "loginViewId"
     public static let navigationControllerId = "navigationControllerId"
     public static let listOrdersViewId = "listOrdersViewId"
+    
+    // MARK: - Strings
+    public static let noOrdersLabelText = "Não há pedidos cadastrados"
 }
