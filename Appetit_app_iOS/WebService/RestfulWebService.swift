@@ -78,4 +78,27 @@ public class RestfulWebService: Params {
             print(ex.localizedDescription)
         }
     }
+    
+    public static func importOrdersWS(context: NSManagedObjectContext, parameters: [String: String], callback: @escaping (_ responseToken: String) -> Void) {
+        do {
+            try genericWS(parameters: parameters, urlString: DEFAULT_WS_URI + IMPORT_ORDERS + "/", onSucces: { data in
+                do {
+                    print(String(data: data!, encoding: .utf8) ?? "No data!")
+                    if let data = data, let result = try OrderDao.saveOrder(json: data, with: context) {
+                        callback("\(result[0].paymentStatus ? "\(result[0].id)" : "Mjop")")
+                    }
+                } catch {
+                    // TODO: show msg in toast
+                    print("Failed to save order.")
+                    print(error.localizedDescription)
+                }
+            }, onFailure: {
+                    // TODO: show msg in toast
+                    print("Internal failure.")
+                })
+        } catch let ex {
+            // TODO: show msg in toast
+            print(ex.localizedDescription)
+        }
+    }
 }

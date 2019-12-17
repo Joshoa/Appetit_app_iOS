@@ -19,12 +19,10 @@ public class Client: NSManagedObject, Codable {
 
     @NSManaged public var id: Int32
     @NSManaged public var name: String?
-    @NSManaged public var orders: NSSet?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
-        case orders
     }
     
     required convenience public init(from decoder: Decoder) throws {

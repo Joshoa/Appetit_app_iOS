@@ -22,7 +22,6 @@ public class Product: NSManagedObject, Codable {
        @NSManaged public var note: String?
        @NSManaged public var options: String?
        @NSManaged public var price: Double
-       @NSManaged public var orders: NSSet?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case id
@@ -30,7 +29,6 @@ public class Product: NSManagedObject, Codable {
         case note
         case options
         case price
-        case orders
     }
     
     required convenience public init(from decoder: Decoder) throws {

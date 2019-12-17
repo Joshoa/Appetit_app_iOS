@@ -17,12 +17,12 @@ public class Order: NSManagedObject, Codable {
         return NSFetchRequest<Order>(entityName: "Order")
     }
 
-    @NSManaged public var date: NSObject?
+    @NSManaged public var date: DateTime?
     @NSManaged public var id: Int32
     @NSManaged public var paymentStatus: Bool
-    @NSManaged public var client: Client?
-    @NSManaged public var products: NSSet?
-    @NSManaged public var user: User?
+    @NSManaged public var client: Int32
+    @NSManaged public var products: String?
+    @NSManaged public var user: Int32
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case date

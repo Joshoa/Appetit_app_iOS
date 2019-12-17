@@ -21,7 +21,6 @@ public class User: NSManagedObject, Codable {
     @NSManaged public var id: Int32
     @NSManaged public var name: String?
     @NSManaged public var password: String?
-    @NSManaged public var orders: NSSet?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case email

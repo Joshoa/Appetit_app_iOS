@@ -13,6 +13,7 @@ class UserDao {
     static func saveUser(json user: Data, with context: NSManagedObjectContext) throws -> User? {
         do {
             let users: [User]? = try GenericDao.getDecoder(with: context).decode([User].self, from: user)
+            GenericDao.save(context: context)
             return users != nil ? users![0] : nil
         } catch {
             throw error

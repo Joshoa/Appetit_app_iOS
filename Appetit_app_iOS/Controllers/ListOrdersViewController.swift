@@ -29,7 +29,14 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: - Data load functions
     private func loadOrders() {
-        
+        importDataFromServer()
+    }
+    
+    private func importDataFromServer() {
+        let parameters = ["user": "\(user?.id ?? 0)" ]
+        RestfulWebService.importOrdersWS(context: context, parameters: parameters) { response in
+            print(response)
+        }
     }
     
     // MARK: - Table view data source
