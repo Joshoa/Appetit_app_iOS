@@ -43,4 +43,12 @@ class GenericDao {
         }
         return nil
     }
+    
+    public static func performFetch(fetchedResultController: NSFetchedResultsController<NSFetchRequestResult>) {
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            print(error.localizedDescription )
+        }
+    }
 }

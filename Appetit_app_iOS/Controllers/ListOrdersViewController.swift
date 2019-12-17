@@ -16,6 +16,7 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     private var user: User?
+    private var listIsAscending: Bool = true
     private var fetchedResultController: NSFetchedResultsController<Order>!
     private var lbNoOrders = UILabel()
 
@@ -33,21 +34,26 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         fetchOrders()
     }
     
+    private func setAndApplyFilters() {
+        listIsAscending = !listIsAscending
+        fetchedResultController.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "amount", ascending: listIsAscending)]
+        GenericDao.performFetch(fetchedResultController: fetchedResultController as! NSFetchedResultsController<NSFetchRequestResult>)
+        tableView.reloadData()
+    }
+    
     private func importDataFromServer() {
         OrderDao.deleteAll(with: context)
         let parameters = ["user": "\(user?.id ?? 0)" ]
         RestfulWebService.importOrdersWS(context: context, parameters: parameters, callback: {})
     }
     
-    private func fetchOrders() {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: OrderDao.getFetchRequest(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    private func fetchOrders(ascending: Bool = true) {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: OrderDao.getFetchRequest(ascending: ascending), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
-        do {
-            try fetchedResultController.performFetch()
-        } catch {
-            print(error.localizedDescription )
-        }
+        GenericDao.performFetch(fetchedResultController: fetchedResultController as! NSFetchedResultsController<NSFetchRequestResult>)
     }
+    
+    
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +112,7 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func filterAction(_ sender: UIButton) {
+        setAndApplyFilters()
     }
 }
 
