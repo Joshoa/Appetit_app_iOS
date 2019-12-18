@@ -11,7 +11,7 @@ import Foundation
 public class Strings {
     
     // MARK: - DateTime format strings
-    public static let dateTimeFormat = "dd/MM/yyyy - HH:mm"
+    public static let dateTimeFormat = "dd/MM/yyyy"
     public static let dateTimeFormat2 = "yyyy-MM-dd HH:mm:ss"
     
     // MARK: - Segue Identifiers
@@ -32,4 +32,5 @@ public class Strings {
     public static let noOrdersLabelText = "Não há pedidos cadastrados"
     public static let importSuccess = "Success to import data!"
     public static let importFailed = "Failed to import data!"
+    public static let sectionListOrdersTitle = ", você já vendeu "
 }

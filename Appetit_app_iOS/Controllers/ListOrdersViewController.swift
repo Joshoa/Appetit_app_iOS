@@ -20,6 +20,9 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     private var listIsAscending: Bool = true
     private var fetchedResultController: NSFetchedResultsController<Order>!
     private var lbNoOrders = UILabel()
+    private var sectionKeys = [String]()
+    private var sectionDates: [String: [Order]] = [String: [Order]]()
+    private var amount: Double = 0
 
     // MARK: - Controllers functions
     override func viewDidLoad() {
@@ -40,10 +43,28 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
         fetchOrders()
     }
     
+    private func loadSections(orders: [Order]?) -> [String: [Order]] {
+            if let orders = orders {
+                amount = 0
+                var setKeys = Set<String>()
+                for order in orders {
+                    if let date = order.date {
+                        if sectionDates[date.toString()] != nil {
+                            sectionDates[date.toString()]?.append(order)
+                        } else {
+                            sectionDates[date.toString()] = [order]
+                        }
+                        setKeys.insert(date.toString())
+                    }
+                    self.amount += order.amount
+                }
+                sectionKeys = Array(setKeys)
+            }
+        return sectionDates
+    }
+    
     private func setAndApplyFilters() {
         listIsAscending = !listIsAscending
-        fetchedResultController.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "amount", ascending: listIsAscending)]
-        GenericDao.performFetch(fetchedResultController: fetchedResultController as! NSFetchedResultsController<NSFetchRequestResult>)
         tableView.reloadData()
     }
     
@@ -77,6 +98,16 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        sectionDates = loadSections(orders: fetchedResultController.fetchedObjects)
+        return sectionDates.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionKeys[section] + Strings.sectionListOrdersTitle + String(format: "R$ %.02f", amount)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let resultController = fetchedResultController, let count = resultController.fetchedObjects?.count, count > 0 {
             tableView.backgroundView = nil
@@ -89,9 +120,11 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Strings.orderCell, for: indexPath) as! OrdersTableViewCell
-        guard let order = fetchedResultController.fetchedObjects?[indexPath.row] else {
+        guard var sectionOrder = sectionDates[sectionKeys[indexPath.section]] else {
             return cell
         }
+        sectionOrder = listIsAscending ? sectionOrder : sectionOrder.reversed()
+        let order = sectionOrder[indexPath.row]
         // Configure the cell...
         cell.prepare(with: order)
         return cell

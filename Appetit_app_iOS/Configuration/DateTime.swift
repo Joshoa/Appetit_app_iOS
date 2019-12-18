@@ -49,7 +49,7 @@ public class DateTime: NSObject, NSCoding, Codable {
     public func getDateTime() -> Date? {
         var dateComponents = DateComponents()
         dateComponents.year = Int(self.year)
-        dateComponents.month = Int(self.month) + 1
+        dateComponents.month = Int(self.month)
         dateComponents.day = Int(self.dayOfMonth)
         dateComponents.timeZone = TimeZone(abbreviation: "BRT")
         dateComponents.hour = Int(self.hourOfDay!)
@@ -80,10 +80,10 @@ public class DateTime: NSObject, NSCoding, Codable {
         return userCalendar.date(from: dateComponents)!
     }
     
-    public func toString() -> String {
+    public func toString(_ format: String = Strings.dateTimeFormat) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "pt-br")
-        formatter.dateFormat = Strings.dateTimeFormat
+        formatter.dateFormat = format
         return formatter.string(from:  getDateTime()!)
     }
     
@@ -104,6 +104,6 @@ public class DateTime: NSObject, NSCoding, Codable {
     static func getCurrentDate() -> DateTime {
         let date = Date()
         let userCalendar = Calendar.current
-        return DateTime(Int32(userCalendar.component(.year, from: date)), Int32(userCalendar.component(.month, from: date) - 1), Int32(userCalendar.component(.day, from: date)), Int32(userCalendar.component(.hour, from: date)), Int32(userCalendar.component(.minute, from: date)), Int32(userCalendar.component(.second, from: date)))
+        return DateTime(Int32(userCalendar.component(.year, from: date)), Int32(userCalendar.component(.month, from: date)), Int32(userCalendar.component(.day, from: date)), Int32(userCalendar.component(.hour, from: date)), Int32(userCalendar.component(.minute, from: date)), Int32(userCalendar.component(.second, from: date)))
     }
 }
