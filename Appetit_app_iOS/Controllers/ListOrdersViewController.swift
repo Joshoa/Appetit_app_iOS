@@ -163,9 +163,6 @@ class ListOrdersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     // MARK: - Actions functions
-    @IBAction func newOrderAction(_ sender: UIButton) {
-    }
-    
     @IBAction func filterAction(_ sender: UIButton) {
         setAndApplyFilters()
     }

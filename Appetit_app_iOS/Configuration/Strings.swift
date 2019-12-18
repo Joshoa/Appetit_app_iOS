@@ -16,6 +16,7 @@ public class Strings {
     
     // MARK: - Segue Identifiers
     public static let loginGoToListOrders = "loginGoToListOrders"
+    public static let newOrderSegue = "newOrderSegue"
     
     // MARK: - Cell Identifiers
     public static let orderCell = "orderCell"
@@ -27,6 +28,7 @@ public class Strings {
     public static let loginViewId = "loginViewId"
     public static let navigationControllerId = "navigationControllerId"
     public static let listOrdersViewId = "listOrdersViewId"
+    public static let startMakeOrderViewId = "startMakeOrderViewId"
     
     // MARK: - Strings
     public static let noOrdersLabelText = "Não há pedidos cadastrados"

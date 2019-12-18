@@ -34,6 +34,7 @@
 		649F0062239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 649F0060239FDB8800E7B8FA /* Appetit_app_iOS.xcdatamodeld */; };
 		649F0064239FDB8B00E7B8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649F0063239FDB8B00E7B8FA /* Assets.xcassets */; };
 		649F0067239FDB8B00E7B8FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649F0065239FDB8B00E7B8FA /* LaunchScreen.storyboard */; };
+		64D5C42F23A9BD440031BCA5 /* StartMakeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5C42E23A9BD440031BCA5 /* StartMakeOrderViewController.swift */; };
 		64E4C2A923A5C0B700B4A5A0 /* GenericDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4C2A823A5C0B700B4A5A0 /* GenericDao.swift */; };
 		64E4C2AB23A5C19B00B4A5A0 /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4C2AA23A5C19B00B4A5A0 /* UserDao.swift */; };
 		64E4C2AD23A73DC500B4A5A0 /* ListOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4C2AC23A73DC500B4A5A0 /* ListOrdersViewController.swift */; };
@@ -70,6 +71,7 @@
 		649F0063239FDB8B00E7B8FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		649F0066239FDB8B00E7B8FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		649F0068239FDB8B00E7B8FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64D5C42E23A9BD440031BCA5 /* StartMakeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMakeOrderViewController.swift; sourceTree = "<group>"; };
 		64E4C2A823A5C0B700B4A5A0 /* GenericDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDao.swift; sourceTree = "<group>"; };
 		64E4C2AA23A5C19B00B4A5A0 /* UserDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		64E4C2AC23A73DC500B4A5A0 /* ListOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrdersViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				6439DB1A23A20A7200AC387D /* LoginViewController.swift */,
 				64E4C2AC23A73DC500B4A5A0 /* ListOrdersViewController.swift */,
+				64D5C42E23A9BD440031BCA5 /* StartMakeOrderViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				649F0058239FDB8800E7B8FA /* AppDelegate.swift in Sources */,
 				649F005A239FDB8800E7B8FA /* SceneDelegate.swift in Sources */,
 				648CEF9623A0AA36002BAD9C /* ViewController+CoreData.swift in Sources */,
+				64D5C42F23A9BD440031BCA5 /* StartMakeOrderViewController.swift in Sources */,
 				64E4C2AB23A5C19B00B4A5A0 /* UserDao.swift in Sources */,
 				6439DB1623A1FE8C00AC387D /* DateTime.swift in Sources */,
 				6439DB1123A1F88C00AC387D /* User+CoreDataClass.swift in Sources */,

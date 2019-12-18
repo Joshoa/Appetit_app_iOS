@@ -194,7 +194,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="newOrderAction:" destination="Srd-Fx-tFY" eventType="touchUpInside" id="TU6-hQ-pur"/>
+                                    <segue destination="BYJ-Rt-wk8" kind="show" identifier="newOrderSegue" id="BOA-IY-upR"/>
                                 </connections>
                             </button>
                             <searchBar opaque="NO" contentMode="redraw" placeholder="Digite a sua busca aqui" translatesAutoresizingMaskIntoConstraints="NO" id="TYi-tX-iUV">
@@ -280,6 +280,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Vno-fs-GPe">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="main_color"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="main_color"/>
                         </textAttributes>
@@ -296,12 +297,116 @@
             </objects>
             <point key="canvasLocation" x="1308.6956521739132" y="109.82142857142857"/>
         </scene>
+        <!--StartMakeOrderView-->
+        <scene sceneID="i6S-ey-0nz">
+            <objects>
+                <viewController storyboardIdentifier="startMakeOrderViewId" title="StartMakeOrderView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYJ-Rt-wk8" customClass="StartMakeOrderViewController" customModule="Appetit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="swW-nX-hyy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="eax-iF-yu5">
+                                <rect key="frame" x="20" y="108" width="374" height="2.5"/>
+                                <color key="progressTintColor" name="green_color"/>
+                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preencha as informações abaixo para concluir o pedido." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqD-DB-KOg">
+                                <rect key="frame" x="20" y="109.5" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jde-qw-7Md"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <color key="textColor" name="dark_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.33000000000000002" progressImage="preciso" translatesAutoresizingMaskIntoConstraints="NO" id="uw8-0V-cKR">
+                                <rect key="frame" x="20" y="189.5" width="374" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="4n6-Yy-OUF"/>
+                                </constraints>
+                                <color key="progressTintColor" name="main_color"/>
+                                <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                            <searchBar opaque="NO" contentMode="redraw" placeholder="Digite a sua busca aqui" translatesAutoresizingMaskIntoConstraints="NO" id="why-hO-piW">
+                                <rect key="frame" x="10" y="205.5" width="394" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vgl-AE-p2J"/>
+                                </constraints>
+                                <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="10" vertical="0.0"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wE-4T-xtS" userLabel="separator">
+                                <rect key="frame" x="17" y="265.5" width="380" height="1"/>
+                                <color key="backgroundColor" name="dark_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ggN-v1-8QW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="dark_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-KK-MN8">
+                                <rect key="frame" x="12" y="296.5" width="390" height="501.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="P6B-cU-alA"/>
+                                </constraints>
+                                <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0cy-KK-MN8" firstAttribute="top" secondItem="7wE-4T-xtS" secondAttribute="bottom" constant="30" id="0D8-Hy-HUd"/>
+                            <constraint firstItem="0cy-KK-MN8" firstAttribute="leading" secondItem="v6P-by-XSI" secondAttribute="leading" constant="12" id="2vx-Nn-orc"/>
+                            <constraint firstItem="v6P-by-XSI" firstAttribute="trailing" secondItem="why-hO-piW" secondAttribute="trailing" constant="10" id="6M5-Ae-kVy"/>
+                            <constraint firstItem="uw8-0V-cKR" firstAttribute="trailing" secondItem="eax-iF-yu5" secondAttribute="trailing" id="8Ld-k7-34P"/>
+                            <constraint firstItem="uw8-0V-cKR" firstAttribute="leading" secondItem="eax-iF-yu5" secondAttribute="leading" id="Bod-zU-VO6"/>
+                            <constraint firstItem="7wE-4T-xtS" firstAttribute="leading" secondItem="why-hO-piW" secondAttribute="leading" constant="7" id="Idm-o6-JFt"/>
+                            <constraint firstItem="eax-iF-yu5" firstAttribute="centerX" secondItem="swW-nX-hyy" secondAttribute="centerX" id="KPr-59-wD1"/>
+                            <constraint firstItem="0cy-KK-MN8" firstAttribute="trailing" secondItem="v6P-by-XSI" secondAttribute="trailing" constant="-12" id="N9J-n7-hZ0"/>
+                            <constraint firstItem="eax-iF-yu5" firstAttribute="top" secondItem="v6P-by-XSI" secondAttribute="top" id="NAe-Nj-Voq"/>
+                            <constraint firstItem="7wE-4T-xtS" firstAttribute="top" secondItem="why-hO-piW" secondAttribute="bottom" id="P91-de-he0"/>
+                            <constraint firstItem="why-hO-piW" firstAttribute="leading" secondItem="v6P-by-XSI" secondAttribute="leading" constant="10" id="R7x-kI-veg"/>
+                            <constraint firstItem="eax-iF-yu5" firstAttribute="leading" secondItem="swW-nX-hyy" secondAttribute="leadingMargin" id="UdH-sC-Nhm"/>
+                            <constraint firstItem="why-hO-piW" firstAttribute="top" secondItem="uw8-0V-cKR" secondAttribute="bottom" id="YhP-XG-stQ"/>
+                            <constraint firstItem="hqD-DB-KOg" firstAttribute="top" secondItem="eax-iF-yu5" secondAttribute="bottom" id="Zrx-DR-quA"/>
+                            <constraint firstItem="v6P-by-XSI" firstAttribute="bottom" secondItem="0cy-KK-MN8" secondAttribute="bottom" constant="10" id="bmb-Z4-1Jv"/>
+                            <constraint firstItem="7wE-4T-xtS" firstAttribute="trailing" secondItem="why-hO-piW" secondAttribute="trailing" constant="-7" id="nO0-ex-Q9z"/>
+                            <constraint firstItem="hqD-DB-KOg" firstAttribute="leading" secondItem="v6P-by-XSI" secondAttribute="leading" constant="20" id="qOS-n6-UHI"/>
+                            <constraint firstItem="uw8-0V-cKR" firstAttribute="top" secondItem="hqD-DB-KOg" secondAttribute="bottom" id="qaN-96-nrl"/>
+                            <constraint firstItem="v6P-by-XSI" firstAttribute="trailing" secondItem="hqD-DB-KOg" secondAttribute="trailing" constant="20" id="s85-b8-Jg3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="v6P-by-XSI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="I76-x8-dIc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="sUU-3v-LcI">
+                            <color key="tintColor" name="main_color"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lbInfo" destination="hqD-DB-KOg" id="hpq-L4-lHA"/>
+                        <outlet property="progressView" destination="uw8-0V-cKR" id="jbO-jO-0Zj"/>
+                        <outlet property="searchBar" destination="why-hO-piW" id="uln-oJ-t17"/>
+                        <outlet property="tableView" destination="0cy-KK-MN8" id="8I7-gg-daw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sa1-Jf-9wE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3130" y="110"/>
+        </scene>
     </scenes>
     <resources>
         <image name="appetit_logo" width="112" height="80"/>
         <image name="eye_close" width="48" height="48"/>
         <image name="filter_icon" width="18" height="14"/>
         <image name="plus_icon" width="24" height="24"/>
+        <image name="preciso" width="16" height="16"/>
         <namedColor name="dark_color">
             <color red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
